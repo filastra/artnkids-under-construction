@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Art n' kids — Coming Soon</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg:#ffffff;
+    --muted:#6b6b6b;
+    --accent-1: #ffd6a5; /* soft peach */
+    --accent-2: #caf0f8; /* soft sky */
+    --accent-3: #fbcfe8; /* soft pink */
+    --ink:#212121;
+    --card:#ffffff;
+    --radius:14px;
+  }
+
+  *{box-sizing:border-box}
+  html,body{height:100%;margin:0;background:var(--bg);-webkit-font-smoothing:antialiased}
+  body{font-family:Quicksand,system-ui,Arial,sans-serif;color:var(--ink);display:flex;align-items:center;justify-content:center;padding:28px}
+
+  /* Page container */
+  .container{
+    width:100%;
+    max-width:1100px;
+    background:var(--card);
+    border-radius:var(--radius);
+    box-shadow:0 18px 50px rgba(33,33,33,0.08);
+    overflow:hidden;
+    display:grid;
+    grid-template-columns: 1fr 420px;
+    gap:0;
+    min-height:520px;
+  }
+
+  /* Left: illustration + headline */
+  .hero{
+    position:relative;
+    padding:36px 42px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    gap:18px;
+    background:linear-gradient(180deg, rgba(250,250,250,1), rgba(248,247,245,1));
+  }
+
+  /* watercolor corner strokes using absolute SVG */
+  .watercolor {
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+    z-index:0;
+    opacity:0.85;
+  }
+
+  .hero-inner{position:relative;z-index:2;max-width:720px}
+
+  .label{
+    font-family:"Playfair Display", serif;
+    font-size:18px;
+    color:var(--muted);
+    letter-spacing:1px;
+  }
+
+  h1{
+    margin:0;
+    font-family:"Playfair Display", serif;
+    font-size:44px;
+    line-height:1.02;
+    color:var(--ink);
+  }
+
+  p.lead{
+    margin:8px 0 0;
+    color:var(--muted);
+    font-size:16px;
+    max-width:60ch;
+  }
+
+  /* Left illustration row */
+  .scene{
+    display:flex;
+    gap:16px;
+    margin-top:20px;
+    align-items:center;
+    flex-wrap:wrap;
+  }
+
+  .illustration{
+    background:transparent;
+    border-radius:10px;
+    padding:8px;
+    flex: 0 0 auto;
+    width:240px;
+  }
+  .illustration svg{width:100%;height:auto;display:block}
+
+  /* Right: actions */
+  .panel{
+    padding:36px 28px;
+    border-left:1px solid #f0f0f0;
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+    justify-content:flex-start;
+    background:linear-gradient(180deg, rgba(255,255,255,1), rgba(254,253,252,1));
+  }
+
+  .panel h3{margin:0;font-family:"Playfair Display", serif;font-size:20px}
+  .panel p{margin:0;color:var(--muted);font-size:14px}
+  .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+  .btn{
+    background:linear-gradient(90deg,var(--accent-1),var(--accent-3));
+    border:none;padding:11px 14px;border-radius:10px;color:#2b2b2b;font-weight:700;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:transform .18s ease,box-shadow .18s ease;
+    box-shadow: 0 8px 20px rgba(251, 113, 150, 0.06);
+  }
+  .btn:hover{transform:translateY(-4px);box-shadow: 0 22px 40px rgba(251,113,150,0.08)}
+
+  .secondary{
+    background:transparent;border:1px solid #f0f0f0;padding:10px 12px;border-radius:10px;color:var(--muted);font-weight:600;text-decoration:none;
+  }
+
+  .subscribe{
+    margin-top:8px;display:flex;gap:8px;align-items:center;
+  }
+  .subscribe input{
+    flex:1;padding:10px;border:1px solid #eee;border-radius:10px;font-size:14px;
+  }
+
+  .socials{display:flex;gap:8px;margin-top:8px}
+  .socials a{display:inline-flex;align-items:center;gap:8px;padding:8px 10px;border-radius:8px;background:#fff;border:1px solid #f0f0f0;text-decoration:none;color:var(--muted);font-size:13px}
+
+  .meta{margin-top:auto;color:var(--muted);font-size:13px}
+
+  /* sketchy decorative stroke under headings */
+  .sketch-line{height:8px;width:120px;background:linear-gradient(90deg,var(--accent-3),var(--accent-2));border-radius:6px;opacity:0.9}
+
+  /* responsive */
+  @media (max-width:1000px){
+    .container{grid-template-columns:1fr 360px}
+    h1{font-size:38px}
+  }
+  @media (max-width:780px){
+    body{padding:18px}
+    .container{grid-template-columns:1fr;min-height:640px}
+    .panel{order:1;border-left:none;border-top:1px solid #f3f3f3}
+    .hero{order:2;padding:28px}
+    .illustration{width:46%}
+    h1{font-size:32px}
+  }
+  @media (max-width:420px){
+    h1{font-size:26px}
+    .illustration{width:100%}
+    .panel{padding:20px}
+    .hero{padding:20px}
+  }
+
+  /* accessibility focus */
+  a:focus, button:focus, input:focus{outline:3px solid rgba(247,201,72,0.18);outline-offset:2px}
+</style>
+</head>
+<body>
+  <div class="container" role="main" aria-labelledby="hero-title">
+    <!-- Left -->
+    <section class="hero" aria-label="Art n Kids creative workshop preview">
+      <!-- watercolor background SVG (absolute) -->
+      <svg class="watercolor" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <defs>
+          <radialGradient id="g1" cx="10%" cy="10%" r="60%">
+            <stop offset="0%" stop-color="#ffd6a5" stop-opacity="0.85"/>
+            <stop offset="60%" stop-color="#ffd6a5" stop-opacity="0.08"/>
+            <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+          </radialGradient>
+          <radialGradient id="g2" cx="90%" cy="85%" r="60%">
+            <stop offset="0%" stop-color="#caf0f8" stop-opacity="0.85"/>
+            <stop offset="60%" stop-color="#caf0f8" stop-opacity="0.06"/>
+            <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+          </radialGradient>
+          <radialGradient id="g3" cx="70%" cy="20%" r="40%">
+            <stop offset="0%" stop-color="#fbcfe8" stop-opacity="0.6"/>
+            <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#g1)"/>
+        <rect width="100%" height="100%" fill="url(#g2)"/>
+        <rect width="100%" height="100%" fill="url(#g3)"/>
+        <!-- subtle paper texture lines -->
+        <g opacity="0.03" stroke="#000" stroke-width="1">
+          <path d="M20 760 q140 -60 320 -42 q160 16 360 -30 q220 -40 420 20" fill="none"/>
+        </g>
+      </svg>
+
+      <div class="hero-inner">
+        <div class="label">ART & MUSIC WORKSHOPS FOR KIDS</div>
+        <h1 id="hero-title">Creativity is Getting Ready</h1>
+        <div class="sketch-line" aria-hidden="true"></div>
+
+        <p class="lead">Welcome to <strong>artnkids</strong> — where tiny hands meet big ideas. We're setting up classes in painting, drawing, beginner piano, rhythm & movement, and playful creative projects. Launching soon — join our mailing list for early registration.</p>
+
+        <div class="scene" aria-hidden="false">
+          <!-- easel illustration -->
+          <figure class="illustration" title="Easel and canvas">
+            <svg viewBox="0 0 240 160" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <g fill="none" stroke="#2b2b2b" stroke-linecap="round" stroke-linejoin="round">
+                <!-- easel legs -->
+                <path d="M40 150 L60 30 L120 30 L140 150" stroke-width="3" opacity="0.9"/>
+                <path d="M60 30 L40 150" stroke-width="2" opacity="0.5"/>
+                <!-- canvas -->
+                <rect x="68" y="36" width="96" height="64" fill="#fff" stroke="#2b2b2b" stroke-width="2"/>
+                <!-- paint blobs -->
+                <circle cx="92" cy="58" r="6" fill="#ffd6a5" stroke="none"/>
+                <circle cx="116" cy="82" r="6" fill="#caf0f8" stroke="none"/>
+                <circle cx="140" cy="64" r="6" fill="#fbcfe8" stroke="none"/>
+                <!-- brush -->
+                <path d="M32 120 q20 -6 36 0" stroke="#2b2b2b" stroke-width="3" />
+                <path d="M62 122 q4 -2 10 -2" stroke="#2b2b2b" stroke-width="2" />
+              </g>
+            </svg>
+          </figure>
+
+          <!-- piano illustration -->
+          <figure class="illustration" title="Kid-friendly keyboard">
+            <svg viewBox="0 0 240 160" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <g fill="none" stroke="#2b2b2b" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="10" y="40" width="220" height="40" rx="6" fill="#fff" stroke="#2b2b2b" stroke-width="2"/>
+                <!-- keys -->
+                <rect x="16" y="44" width="24" height="32" fill="#fff" stroke="#000"/>
+                <rect x="42" y="44" width="20" height="32" fill="#000"/>
+                <rect x="62" y="44" width="20" height="32" fill="#fff" stroke="#000"/>
+                <rect x="82" y="44" width="20" height="32" fill="#000"/>
+                <rect x="102" y="44" width="24" height="32" fill="#fff" stroke="#000"/>
+                <!-- small music notes -->
+                <path d="M180 30 q6 -6 12 0" stroke="#2b2b2b" stroke-width="2"/>
+                <circle cx="180" cy="30" r="3" fill="#2b2b2b"/>
+                <circle cx="192" cy="26" r="3" fill="#2b2b2b"/>
+              </g>
+            </svg>
+          </figure>
+
+          <!-- child sketch -->
+          <figure class="illustration" title="Kids playing and painting">
+            <svg viewBox="0 0 240 160" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <g fill="none" stroke="#2b2b2b" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="44" cy="36" r="8" stroke-width="2"/>
+                <path d="M44 46 q16 6 36 2" stroke-width="2"/>
+                <path d="M28 60 q20 -8 40 0" stroke-width="2"/>
+                <path d="M130 42 q12 -8 24 0" stroke-width="2"/>
+                <path d="M110 74 q30 -8 40 10" stroke-width="2"/>
+                <path d="M20 90 q40 14 80 10" stroke-width="1.6" opacity="0.6"/>
+              </g>
+            </svg>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- Right panel -->
+    <aside class="panel" aria-label="Sign up and contact">
+      <div>
+        <h3>Join the mailing list</h3>
+        <p>Be first to know about class schedules, open days, and trial lessons.</p>
+      </div>
+
+      <form class="subscribe" action="#" method="POST" onsubmit="return false;" aria-label="Subscribe form">
+        <input type="email" placeholder="your@email.com" aria-label="Email address" required>
+        <button class="btn" type="submit">Notify Me</button>
+      </form>
+
+      <div class="actions" aria-hidden="false">
+        <a class="btn" href="mailto:hello@artnkids.com?subject=Info%20about%20classes" aria-label="Contact via email">Contact</a>
+        <a class="secondary" href="#" aria-label="Learn more">Our Program</a>
+      </div>
+
+      <div class="socials" aria-hidden="false">
+        <a href="#" aria-label="Instagram">Instagram</a>
+        <a href="#" aria-label="YouTube">YouTube</a>
+        <a href="#" aria-label="Facebook">Facebook</a>
+      </div>
+
+      <div class="meta">
+        <div style="margin-top:10px">© artnkids 2025</div>
+        <div style="margin-top:6px;color:var(--muted)">Questions? <a href="mailto:hello@artnkids.com" style="color:var(--accent-2);text-decoration:none">hello@artnkids.com</a></div>
+      </div>
+    </aside>
+  </div>
+</body>
+</html>
